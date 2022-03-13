@@ -2,7 +2,6 @@ import java.util.Iterator;
 
 public class Iterator4 implements Iterator {
     private int previous = 1;
-    private int current = 1;
     private int limit;
 
     public Iterator4(int N) {
@@ -11,28 +10,30 @@ public class Iterator4 implements Iterator {
 
     @Override
     public boolean hasNext() {
-        if (previous < limit) {
-            return false;
-        } else {
-            return true;
-        }
+        return nextPrime() != 0;
     }
 
     @Override
-    public Object next() {
-        return null;
+    public Integer next() {
+        if (nextPrime()!=0){
+            previous=nextPrime();
+            return previous;
+        }else {
+            return null;
+        }
     }
 
     private int nextPrime() {
         int answer = 0;
         int i = previous + 2;
-        while(i<=limit && answer==0){
-            for (int j = 3; j < i; j += 2) {
-                if (i % j == 0) {
-                    break;
-                }
+        for (int j = 3; j < i; j += 2) {
+            if (i % j == 0) {
+                i+=2;
+                j=3;
             }
         }
+        if (i<=limit)answer=i;
+        //if 0 means there is no next prime:
         return answer;
     }
 }

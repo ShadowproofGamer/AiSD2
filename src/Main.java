@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        zad2();
+        zad4();
 
 
 
@@ -42,6 +42,13 @@ public class Main {
         Iterator3<Integer> iterator3 = new Iterator3<>(tab2.iterator(), tab3.iterator());
         while (iterator3.hasNext()){
             System.out.println(iterator3.next());
+        }
+    }
+    private static void zad4(){
+        //zad3
+        Iterator4 iterator4 = new Iterator4(1000);
+        while (iterator4.hasNext()){
+            System.out.println(iterator4.next());
         }
     }
     //iteratory jako pętla for:
