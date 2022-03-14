@@ -62,8 +62,49 @@ public class Main {
 
     private static void zad5() {
         //zad5
+        //klasa z wykładu:
+        /*
+        import java.util.Iterator;
+        import java.util.NoSuchElementException;
 
+        public class ArrayIterator<T> implements Iterator<T> {
+            private T array[];
+            private int pos = 0;
+
+            public ArrayIterator(T anArray[]) {
+                array = anArray;
+            }
+
+            public boolean hasNext() {
+                return pos < array.length;
+            }
+
+            public T next() throws NoSuchElementException {
+                if (hasNext())
+                    return array[pos++];
+                else
+                    throw new NoSuchElementException();
+            }
+
+            public void remove() {
+                throw new UnsupportedOperationException();
+            }
+        }
+         */
+        //rozwiązanie:
+        /*
+        public void remove () {
+            int len = array.length - 1;
+            T[] temp = new T[len];
+            for (int i = 0; i < pos; i++) {
+                temp[i] = array[i];
+            }
+            for (int i = pos + 1; i < len; i++) {
+                temp[i - 1] = array[i];
+            }
+            array = temp;
+        }
+
+         */
     }
-    //iteratory jako pętla for:
-
 }
