@@ -1,47 +1,41 @@
 import java.util.Iterator;
 
 public class Iterator1<T> implements Iterator<T> {
-    Iterator<T> iter;
-    //Iterator<T> temp;
-    int k;
+    private Iterator<T> iter;
+    private Predicate<Integer> pred;
+    private T nextElem=null;
+    private boolean nextExist=true;
+    private int i=0;
 
-    public Iterator1(Iterator<T> iter, int k) {
+    public Iterator1(Iterator<T> iter, Predicate<Integer> pred) {
         this.iter = iter;
-        this.k = k;
-        //this.temp = iter;
+        this.pred = pred;
+    }
 
+    private void findNextElem() {
+        while (iter.hasNext()) {
+            i++;
+            nextElem = iter.next();
+            if (pred.accept(i)) {
+                return;
+            }
+        }
+        nextExist=false;
+        nextElem=null;
     }
 
     @Override
     public boolean hasNext() {
-        return iter.hasNext();
+        return nextExist;
     }
-    //@Override
-    //public boolean hasNext() {
-    //    boolean answer = true;
-    //    for (int i = 0; i < k; i++) {
-    //        if (temp.hasNext()) {
-    //            if (i<k-1) temp.next();
-//
-    //        }else{
-    //            answer=false;
-    //            break;
-    //        }
-    //    }
-    //    return answer;
-    //}
 
     @Override
     public T next() {
-        for (int i = 0; i < k; i++) {
-            if (this.hasNext()) {
-                if (i + 1 == k) {
-                    return iter.next();
-                } else {
-                    iter.next();
-                }
-            }
+        if (nextElem==null){
+            findNextElem();
         }
-        return null;
+        T answer = nextElem;
+        findNextElem();
+        return answer;
     }
 }
