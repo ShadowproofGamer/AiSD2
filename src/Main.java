@@ -2,8 +2,14 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
+        System.out.println("zadanie 1");
         zad1();
-
+        System.out.println("zadanie 2");
+        zad2();
+        System.out.println("zadanie 3");
+        zad3();
+        System.out.println("zadanie 4");
+        zad4();
 
     }
 
